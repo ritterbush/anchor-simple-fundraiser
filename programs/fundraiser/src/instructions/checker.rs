@@ -28,7 +28,7 @@ impl<'info> CheckContributions<'info> {
 
         // Check if the target amount has been met
         require!(
-            self.vault.amount >= self.fundraiser.amount_to_raise,
+            self.fundraiser.current_amount >= self.fundraiser.amount_to_raise,
             FundraiserError::TargetNotMet
         );
 
@@ -53,7 +53,7 @@ impl<'info> CheckContributions<'info> {
         let cpi_ctx = CpiContext::new_with_signer(cpi_program, cpi_accounts, &signer_seeds);
 
         // Transfer the funds from the vault to the maker
-        transfer(cpi_ctx, self.vault.amount)?;
+        transfer(cpi_ctx, self.vault.get_lamports())?;
 
         Ok(())
     }

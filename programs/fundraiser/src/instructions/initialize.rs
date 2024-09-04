@@ -34,7 +34,7 @@ impl<'info> Initialize<'info> {
             amount_to_raise: amount,
             current_amount: 0,
             deadline: deadline_,
-            bump: bumps.fundraiser
+            bump: bumps.fundraiser,
         });
 
         Ok(())

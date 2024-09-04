@@ -45,7 +45,7 @@ impl<'info> Refund<'info> {
         );
 
         require!(
-            self.vault.amount < self.fundraiser.amount_to_raise,
+            self.fundraiser.current_amount < self.fundraiser.amount_to_raise,
             crate::FundraiserError::TargetMet
         );
 
