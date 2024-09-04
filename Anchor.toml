@@ -5,10 +5,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-fundraiser = "Eoiuq1dXvHxh6dLx3wh9gj8kSAUpga11krTrbfF5XYsC"
-
-[programs.devnet]
-fundraiser = "Eoiuq1dXvHxh6dLx3wh9gj8kSAUpga11krTrbfF5XYsC"
+anchor_simple_fundraiser = "8ekk3EkAg5o4u3oMWHLDqYXhBA4AZqmQaeecvNDgdWup"
 
 [registry]
 url = "https://api.apr.dev"
