@@ -6,7 +6,8 @@ use crate::{
         Fundraiser,
         Vault,
     },
-    ANCHOR_DISCRIMINATOR, 
+    FundraiserError,
+    ANCHOR_DISCRIMINATOR,
 };
 
 #[derive(Accounts)]
@@ -41,7 +42,7 @@ impl<'info> Contribute<'info> {
         let current_time = Clock::get()?.unix_timestamp;
         require!(
             self.fundraiser.deadline >= current_time,
-            crate::FundraiserError::FundraiserEnded
+            FundraiserError::FundraiserEnded
         );
 
         // Transfer the funds to the vault

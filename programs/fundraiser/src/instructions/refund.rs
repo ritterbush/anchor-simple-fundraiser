@@ -1,12 +1,13 @@
 use anchor_lang::{prelude::*, system_program::{transfer, Transfer}};
 
-use crate::
-state::{
+use crate::{
+    state::{
         Contributor,
         Fundraiser,
         Vault,
-    }
-;
+    },
+    FundraiserError,
+};
 
 #[derive(Accounts)]
 pub struct Refund<'info> {
@@ -41,12 +42,12 @@ impl<'info> Refund<'info> {
  
         require!(
             self.fundraiser.deadline <= current_time,
-            crate::FundraiserError::FundraiserNotEnded
+            FundraiserError::FundraiserNotEnded
         );
 
         require!(
             self.fundraiser.current_amount < self.fundraiser.amount_to_raise,
-            crate::FundraiserError::TargetMet
+            FundraiserError::TargetMet
         );
 
         // Transfer the funds back to the contributor
